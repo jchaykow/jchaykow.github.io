@@ -6,7 +6,9 @@ modified:
 excerpt: "Exploring an unknown dataset"
 tags: []
 ---
-Let's take a look at a Kaggle competition dataset. One of the interesting things about this Kaggle dataset is that we don't know much about the set itself and we need to figure everything out from scratch.  That is what this code does well and we will break down each piece of it to make sure we understand how and why it is done.  Remember, each time we encounter a new chunk of code we should be thinking why is this necessary, or, what is it we want to do next? I've included little statements about our 'Goals' to get you started thinking this way. "The Website of the Kaggle competition is <https://www.kaggle.com/c/springleaf-marketing-response>" and you can obtain this code through the generosity of Darragh at <https://www.kaggle.com/darraghdog/springleaf-marketing-response/explore-springleaf/notebook>.  Goal: to explore the dataset and get a better sense of the variables.  
+Let's take a look at a Kaggle competition dataset and R code from author, Darragh. One of the interesting things about this Kaggle dataset is that we don't know much about the set itself and we need to figure everything out from scratch.  That is what this code does well and we will break down each piece of it to make sure we understand how and why it is done.  Remember, each time we encounter a new chunk of code we should be thinking why is this necessary, or, what is it we want to do next? I've included little statements about our 'Goals' to get you started thinking this way. "The Website of the Kaggle competition is <https://www.kaggle.com/c/springleaf-marketing-response>" and you can obtain this code through the generosity of Darragh at <https://www.kaggle.com/darraghdog/springleaf-marketing-response/explore-springleaf/notebook>.  
+
+### Goal: to explore the dataset and get a better sense of the variables.  
 So let's get started.
 
 "Sys.time()" is taking the current time when you ran the code at your system's location.  We save that to some variable "time.1" and then we use the "format()" function to display the time nicely. The second argument is a character string that pulls each part of the time (day, month, year -- hour, minute, second).
@@ -53,7 +55,7 @@ cat("Row count : ", row_count[1], "; Predictor column count : ", ncol(train))
 ## Row count :  145232 ; Predictor column count :  1932
 {% endhighlight %}
 
-Goal: to find the features that will actually help our model later on.
+### Goal: to find the features that will actually help our model later on.
 
 'is.na' is a fantastic function which returns a logical vector of the same length indicating whether a value is missing or not (TRUE means the element is missing).  For this function we are essentially saying, take all of the missing elements of train, then take the length of that vector, and divide it by the total dimensions of the dataset 'train'.  Remember that whenever we use the brackets next to an object, we are essentially saying 'the elements of' that object.  Then the number of columns times the number of rows is just the dimension of the matrix.
 
@@ -104,7 +106,7 @@ cat("Constant feature count:", length(col_ct[col_ct==1]))
 train = train[, !names(train) %in% names(col_ct[col_ct==1])]
 {% endhighlight %}
 
-Goal: separate the numeric and non-numeric rows.
+### Goal: separate the numeric and non-numeric rows.
 
 To get a sense of all of our feature vectors, we must deal with them as numeric and character vectors.  To do this we will separate the dataset into sections (numeric and character).  Again we are using many of the same functions we discussed earlier.  'is.numeric()' and 'is.character' are much like 'is.na()', except instead of returning trues and falses where there are NA values, they perform this for whether values are numeric or character strings.
 
@@ -124,7 +126,7 @@ cat("Numerical column count : ", dim(train_numr)[2],
 ## Numerical column count :  1876 ; Character column count :  51
 {% endhighlight %}
 
-Goal: learn more about character features.
+### Goal: learn more about character features.
 
 Since we know there are only 51 character features, we can actually take a look at all of them without our brains exploding.  We apply the function 'unique()' to all of the character features, and then we print the first 4 of them (if there are 4).
 
@@ -190,7 +192,7 @@ str(lapply(train_char, unique), vec.len = 4)
 ##  $ VAR_1934: chr [1:5] "IAPS" "RCC" "BRANCH" "MOBILE" ...
 {% endhighlight %}
 
-Goal: encode all NA values the same way.
+### Goal: encode all NA values the same way.
 
 "It looks like NA is represented in character columns by -1 or [] or blank values, lets convert these to explicit NAs."  We see here that our data is a little messy.  The missing values are not already coded as NAs, so we must do this ourselves.
 Darragh remarks, "Not entirely sure this is the right thing to do as there are real NA values, as well as -1 values already existing, however it can be tested in predictive performance." This is an issue with data cleaning that we may not be able to avoid.
@@ -202,7 +204,7 @@ train_char[train_char==""] = NA
 train_char[train_char=="[]"] = NA
 {% endhighlight %}
 
-Goal: put date features in new data frame.
+### Goal: put date features in new data frame.
 
 Now we want to create a new dataframe for the date features.  To do this we will use 'grep()'.  grep() will search through a character vector looking for the pattern that you tell it to look for.  In this case our pattern that we pass it is JAN1 FEB1 MAR1.  The same thing gets returned if you only pass the pattern "JAN1".
 
@@ -211,7 +213,7 @@ Now we want to create a new dataframe for the date features.  To do this we will
 train_date = train_char[,grep("JAN1|FEB1|MAR1", train_char),]
 {% endhighlight %}
 
-Goal: remove dates from character features and view them separately.
+### Goal: remove dates from character features and view them separately.
 
 "colnames(train\_char) %in% colnames(train\_date)" will give TRUE or FALSE where the column name in train\_char is overlapped with that in train\_date.  Once we place the exclamation point in front, this just reverses all of the TRUEs and FALSEs (TRUE becomes FALSE, and vice versa). Then we want only those columns in train\_char and we will redefine train\_char in this way.
 
@@ -224,7 +226,7 @@ train_date = sapply(train_date, function(x) strptime(x, "%d%B%y:%H:%M:%S"))
 train_date = do.call(cbind.data.frame, train_date)
 {% endhighlight %}
 
-Goal: separate times from dates.
+### Goal: separate times from dates.
 
 Now we can separate the dates and the times.  Just from looking at our data frame, we can see that only variables VAR\_0204 and VAR\_0217 contain times.
 
@@ -257,7 +259,7 @@ for(i in 1:2) hist(train_hour[,i], main = paste(colnames(train_hour)[i], "hourly
 
 ![center](/images/2016-03-25-Kaggle-Springleaf/unnamed-chunk-14-1.png) 
 
-Goal: view geographical elements of variables containing state names.
+### Goal: view geographical elements of variables containing state names.
 
 From looking at our data earlier, we saw that two variables had abbreviations of states as their elements.  So we want to see the distribution of these abbreviations in each variable in a heat map across the US map.  For this we will begin with the 'map()' function, or as I like to call it, Dora's function.
 
@@ -295,7 +297,7 @@ grid.arrange(mapStates(train_char, "VAR_0274"), mapStates(train_char, "VAR_0237"
 ![center](/images/2016-03-25-Kaggle-Springleaf/unnamed-chunk-15-1.png) 
 
   
-Goal: find the number of unique values per column.
+### Goal: find the number of unique values per column.
 
 So, now we have numerical feature, character features, and date features.  We can calculate the number of unique values in each column of each set of features by running this function on the fly, length(unique(x)).  Once we have all of the counts, we can row bind the vectors, which will make one big vector and tack on another column that describes the type of variable (numerical, character, date). Now we have a really long data frame with two columns called 'all\_ct' that has the number of unique elements of each feature followed by the feature type.  
 
@@ -351,7 +353,7 @@ ggplot(all_na, aes(x = count, fill=type)) +
 
 ![center](/images/2016-03-25-Kaggle-Springleaf/unnamed-chunk-17-1.png) 
   
-Goal:  look at the numerical values.
+### Goal:  look at the numerical values.
 
 The issue here is that most of the features are numerical...and there are A LOT.  So instead of viewing all of them, we need to randomly sample them; we'll take 100 of them (not a rigorously derived number, but...).  The function sample() will do most of the work here by sampling values from 1 through the number of columns in the numerical training set.  Then we will take the elements of 'train\_numr' that fall in those spaces and save them to a new object 'train\_numr\_samp'.
 
@@ -517,7 +519,7 @@ corrplot(descrCor_spea, order = "hclust", mar=c(0,0,1,0), tl.pos="n", main="Spea
 
 ![center](/images/2016-03-25-Kaggle-Springleaf/unnamed-chunk-21-2.png) 
 
-Goal: create a plot that shows the proportion of features containing a max correlation to another feature below each correlation threshold.
+### Goal: create a plot that shows the proportion of features containing a max correlation to another feature below each correlation threshold.
 
 expand.grid() creates a data frame from all combinations of the vectors or factors you give it.  In our case we are giving the function 3 arguments, two of which are NA for now, and the corr_limit is just the sequence from 0 to 1 by 0.01.
 findCorrelation() runs through a correlation matrix and gives you the columns to remove to reduce pair-wise correlations. This is often used for feature selection. So we want the number of columns to remove from both 'descrCor\_pear' and 'descrCor\_spea' for every possible correlation cutoff in corr\_limit. This number ends up, conveniently, being a percentage since we sampled 100 numerical features. We can imagine that for very low correlation cutoffs most of the features will be removed, and vice versa.  Then for each of these values we will save them in the vector columns we created 'perc\_feat\_pear' and 'perc\_feat\_spea'.
