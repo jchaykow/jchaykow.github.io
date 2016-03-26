@@ -204,7 +204,7 @@ train_char[train_char=="[]"] = NA
 
 Goal: put date features in new data frame.
 
-Now we want to create a new dataframe for the date features.  To do this we will use 'grep()'.  grep will search through a character vector looking for the pattern that you tell it to look for.  In this case our pattern that we pass it is "JAN1|FEB1|MAR1".  The same thing gets returned if you only pass the pattern "JAN1".
+Now we want to create a new dataframe for the date features.  To do this we will use 'grep()'.  grep() will search through a character vector looking for the pattern that you tell it to look for.  In this case our pattern that we pass it is JAN1 FEB1 MAR1.  The same thing gets returned if you only pass the pattern "JAN1".
 
 
 {% highlight r %}
