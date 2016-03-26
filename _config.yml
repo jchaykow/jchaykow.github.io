@@ -41,9 +41,9 @@ titlecase: true
 
 # Site owner
 owner:
-  name: Your Name
+  name: Mike Chaykowsky
   avatar: bio-photo.jpg
-  bio: "Describe your self."
+  bio: "Data Science - Data Analysis”
   email:
   disqus-shortname:
   twitter: #username

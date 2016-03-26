@@ -245,7 +245,7 @@ par(mar=c(2,2,2,2),mfrow=c(4,4))
 for(i in 1:16) hist(train_date[,i], "weeks", format = "%d %b %y", main = colnames(train_date)[i], xlab="", ylab="")
 {% endhighlight %}
 
-![center](jchaykow.github.io/images/2016-03-25-Kaggle-Springleaf/unnamed-chunk-13-1.png) 
+![center](/images/2016-03-25-Kaggle-Springleaf/unnamed-chunk-13-1.png) 
 
 Now if we want histograms of the times, the process is pretty much the same.  Nothing new to see here in the code.
 
@@ -255,7 +255,7 @@ par(mar=c(2,2,2,2),mfrow=c(1,2))
 for(i in 1:2) hist(train_hour[,i], main = paste(colnames(train_hour)[i], "hourly"), breaks = c(0:24), xlab="", ylab="")
 {% endhighlight %}
 
-![center](jchaykow.github.io/images/2016-03-25-Kaggle-Springleaf/unnamed-chunk-14-1.png) 
+![center](/images/2016-03-25-Kaggle-Springleaf/unnamed-chunk-14-1.png) 
 
 Goal: view geographical elements of variables containing state names.
 
@@ -292,7 +292,7 @@ mapStates = function(df, feat){
 grid.arrange(mapStates(train_char, "VAR_0274"), mapStates(train_char, "VAR_0237"),ncol=2)
 {% endhighlight %}
 
-![center](jchaykow.github.io/images/2016-03-25-Kaggle-Springleaf/unnamed-chunk-15-1.png) 
+![center](/images/2016-03-25-Kaggle-Springleaf/unnamed-chunk-15-1.png) 
 
   
 Goal: find the number of unique values per column.
@@ -321,7 +321,7 @@ g2 = ggplot(all_ct, aes(x = count, fill=type)) +
 grid.arrange(g1, g2, ncol=2)
 {% endhighlight %}
 
-![center](jchaykow.github.io/images/2016-03-25-Kaggle-Springleaf/unnamed-chunk-16-1.png) 
+![center](/images/2016-03-25-Kaggle-Springleaf/unnamed-chunk-16-1.png) 
 
   
 Here we pretty much do the same thing as the last chunk of code, but for NAs instead of unique values. As you can see on the graph, 'breaks' allows you to set the tick marks on the axis specified. We must 'scale\_x\_log10' if we actually want to see the data at these break marks because otherwise the x-axis would get too scrunched.  If you want to see what I mean, try changing 'scale\_x\_log10' to 'scale\_x\_continuous'. Our final result shows that most features have somewhere from 0 - 100 NA values.
@@ -349,7 +349,7 @@ ggplot(all_na, aes(x = count, fill=type)) +
   xlab("NA Count") + ylab("Feature Count")
 {% endhighlight %}
 
-![center](jchaykow.github.io/images/2016-03-25-Kaggle-Springleaf/unnamed-chunk-17-1.png) 
+![center](/images/2016-03-25-Kaggle-Springleaf/unnamed-chunk-17-1.png) 
   
 Goal:  look at the numerical values.
 
@@ -509,13 +509,13 @@ descrCor_spea <-  cor(scale(train_numr_samp,center=TRUE,scale=TRUE), method="spe
 corrplot(descrCor_pear, order = "hclust", mar=c(0,0,1,0), tl.pos="n", main="Pearson correlation of 100 sampled numerical features")
 {% endhighlight %}
 
-![center](jchaykow.github.io/images/2016-03-25-Kaggle-Springleaf/unnamed-chunk-21-1.png) 
+![center](/images/2016-03-25-Kaggle-Springleaf/unnamed-chunk-21-1.png) 
 
 {% highlight r %}
 corrplot(descrCor_spea, order = "hclust", mar=c(0,0,1,0), tl.pos="n", main="Spearman correlation of 100 sampled numerical features")
 {% endhighlight %}
 
-![center](jchaykow.github.io/images/2016-03-25-Kaggle-Springleaf/unnamed-chunk-21-2.png) 
+![center](/images/2016-03-25-Kaggle-Springleaf/unnamed-chunk-21-2.png) 
 
 Goal: create a plot that shows the proportion of features containing a max correlation to another feature below each correlation threshold.
 
@@ -541,7 +541,7 @@ points(corr.df$corr_limit, abs(100-corr.df$perc_feat_spea), pch=19, col="red")
 legend("topleft", c("Pearson", "Spearman"), col = c("blue", "red"), pch = 19, bg="white")
 {% endhighlight %}
 
-![center](jchaykow.github.io/images/2016-03-25-Kaggle-Springleaf/unnamed-chunk-22-1.png) 
+![center](/images/2016-03-25-Kaggle-Springleaf/unnamed-chunk-22-1.png) 
 
 Recall, at the very beginning we saved train$target as the varaible 'y'.  So here we can take a look at this target variable, which is binary.
 
@@ -549,4 +549,4 @@ Recall, at the very beginning we saved train$target as the varaible 'y'.  So her
 hist(y, main="Binary Target")
 {% endhighlight %}
 
-![center](jchaykow.github.io/images/2016-03-25-Kaggle-Springleaf/unnamed-chunk-23-1.png) 
+![center](/images/2016-03-25-Kaggle-Springleaf/unnamed-chunk-23-1.png) 
