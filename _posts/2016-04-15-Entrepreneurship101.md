@@ -69,7 +69,7 @@ It may also be interesting to note that 672 students attempted at least 1 assign
 Now we will check how many students actually received a verified certificate.
 
 {% highlight text %}
-## The number of students who received a verified certificate is 142
+## The number of students who received a verified certificate is 127
 {% endhighlight %}
 
 Other aspects of this data must be researched more thoroughly.  I observed a sample of time separation data between assignment time submitted and assignment time graded, however, excluding a few outliers most grades were produced within 20mins.  So this did not yield any results.
