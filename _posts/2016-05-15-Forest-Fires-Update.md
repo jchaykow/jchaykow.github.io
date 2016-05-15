@@ -703,6 +703,13 @@ fprintf(' %f \n', grad);
 pause;
 {% endhighlight %}
 
+Cost at initial theta (zeros): 0.693147
+Gradient at initial theta (zeros): 
+ 0.383946 
+ 42.411605 
+ 208.871567 
+
+Local minimum possible.
 
 {% highlight r %}
 %% Optimization with fminunc
@@ -738,6 +745,13 @@ pause;
 
 ![center](/images/2016-05-15-Forest-Fires-Update/unnamed-chunk-21-1.png)
 
+Cost at theta found by fminunc: 0.358790
+theta: 
+ -2.123344 
+ -0.000557 
+ 0.000291 
+For a day with scores DMC = 110 and DC = 540, we predict a big fire probability of 0.116324
+
 {% highlight r %}
 %% Prediction
 
@@ -754,3 +768,4 @@ fprintf('Train Accuracy: %f\n', mean(double(p == y)) * 100);
 pause;
 {% endhighlight %}
 
+Train Accuracy: 88.394584
