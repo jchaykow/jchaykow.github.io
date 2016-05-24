@@ -38,7 +38,6 @@ page_layout: page
 # Format titles with titlecase?
 titlecase: true
 
-
 # Site owner
 owner:
   name: Mike Chaykowsky
@@ -72,5 +71,20 @@ owner:
   flickr: #username
   codepen: #username
 
-include: [".htaccess"]
+include: [“.htaccess”]
 exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md"]
+
+collections:
+  work:
+    output: true
+    permalink: /:collection/:path/
+
+defaults:
+  # _work
+  - scope:
+      path: ""
+      type: work
+    values:
+      layout: single
+      author_profile: false
+      share: true

@@ -1,7 +1,10 @@
 # Site navigation links
 
-- title: ABOUT
+- title: About
   url: /about/
 
-- title: POSTS
+- title: annotatoR
   url: /posts/
+
+- title: My Recent Work
+  url: /work/
