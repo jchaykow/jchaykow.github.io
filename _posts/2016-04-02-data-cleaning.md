@@ -99,7 +99,7 @@ head(potentialDupes)
 ## 6 10463_NY     2         BRONX         BRONX_10463_NY
 {% endhighlight %}
 
-### Goal: place our fixed city names in one easyily identifiable .csv file
+### Goal: place our fixed city names in one easily identifiable .csv file
 
 If we use the dim() command, we can see that the reviewDupes data.frame is much larger than the potentialDupes data.frame.  This is just because the potentialDupes filtered for those City names that were grouped by stateZip and those that were not grouped were not included (this is the filter(n > 1) command).  Now we will combine the two sets we have created, potentialDupes and reviewDupes.  But we don't want everything from both. We use left\_join() by matching up the two data.frames using one column (stateZip) and then all of the extra columns from reviewDupes just get tacked on at the end of the data.frame along with the new column we create called 'dist'.  But keep in mind that if there is a stateZip in reviewDupes that is not in potentialDupes it will not be added to the new data.frame dupes. stringdist() is an interesting function in that it will tell you how far off one character string is from another.  If we look at the first element of dupes, altName = Elmont is dist = 1 from City = Elmony, because they differ by one character. In row 4, altName = Richmondhill is dist = 1 from City = Richmond Hill, because of the space.  Then we filter for only those entries that the stringdist is between 1 and 2, included.
 
