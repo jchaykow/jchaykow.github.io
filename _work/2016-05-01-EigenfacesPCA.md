@@ -1,10 +1,11 @@
 ---
-layout: post
 title: "Eigenfaces with PCA"
-author: mike_chaykowsky
-modified:
-excerpt: "a detailed look"
+author: "mike_chaykowsky"
+layout: post
+output: pdf_document
+modified: null
 tags: []
+excerpt: a detailed look
 ---
 
 My goal here was to look under the hood of principal component analysis (PCA) and get a better sense of how it functions, more specifically in the field of image compression.  Using an implementation from scikit-learn, PCA and support vector machines (SVM) were utilized to reduce the dimensionality of and classify over 13,000 color images of famous figures' faces and look at a rudimentary facial recognition process. PCA utilizes the eigenvectors of the covariance matrix to redescribe data points in the direction of highest variance. A metric developed using a weighted average of precision and recall yielded a score of 77% when 50 principal components were used for the study and out of 36 faces given to the model to recognize, 29 were predicted correctly. Improvements of the study could be developed using a cross-validation of the number of principal components.
