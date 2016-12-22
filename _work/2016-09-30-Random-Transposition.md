@@ -3,7 +3,7 @@ layout: post
 title: "Random Transposition with Naive Markov Chain Monte Carlo"
 author: mike_chaykowsky
 modified:
-excerpt: "Heavier on the Math"
+excerpt: "Ever shuffle cards two at a time?"
 tags: []
 ---
 
