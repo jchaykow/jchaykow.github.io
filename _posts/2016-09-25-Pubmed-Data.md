@@ -6,7 +6,7 @@ modified:
 excerpt: "Exploring another unknown dataset"
 tags: []
 ---
-This code comes from yours truly. Typically I post my own code in the Recent Work section, but I wanted to annotate this out for everyone to read in case you wanted to take a look through it. This is an exploratory analysis of a completely random publicly available dataset [found here](http://datadryad.org/resource/doi:10.5061/dryad.781pv/8) from Piwowar HA, Vision TJ (2013). I had no prior knowledge of the data's contents, but developed an understanding through some quick charts. Let's take a look.
+I wanted to annotate this out for everyone to read in case you wanted to take a look through it. This is an exploratory analysis of a completely random publicly available dataset [found here](http://datadryad.org/resource/doi:10.5061/dryad.781pv/8) from Piwowar HA, Vision TJ (2013). I had no prior knowledge of the data's contents, but developed an understanding through some quick charts. Let's take a look.
 
 
 {% highlight r %}
