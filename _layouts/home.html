@@ -33,7 +33,7 @@
     {% include _author-bio.html %}
   </div>
   <div id="index">
-    <h3><a href="{{ site.url}}/posts/">Recent annotatoR Posts</a></h3>
+    <h3><a href="{{ site.url}}/posts/">Recent Work Posts</a></h3>
     {% for post in site.posts limit:5 %}
     <article>
       {% if post.link %}
@@ -45,7 +45,7 @@
     </article>
     {% endfor %}
     
-    <h3><a href="{{ site.url}}/work/">Recent Work Posts</a></h3>
+    <h3><a href="{{ site.url}}/work/">Recent annotatoR Posts</a></h3>
     {% for post in site.work reversed offset:1 %}
     <article>
       {% if post.link %}
