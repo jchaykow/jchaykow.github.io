@@ -7,4 +7,4 @@ excerpt: "Analysis of MITx MOOC"
 tags: []
 ---
 
-<iframe src="https://drive.google.com/file/d/0B5ZlFi6nMtXhR3ZzY1hDTFZpQ3M/preview" width="100%" height="100%"></iframe>
+<iframe src="https://drive.google.com/file/d/0B5ZlFi6nMtXhR3ZzY1hDTFZpQ3M/preview" width="1000%" height="1000%"></iframe>
