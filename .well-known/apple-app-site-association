@@ -2,18 +2,9 @@
   "applinks": {
     "details": [
       {
-        "appIDs": [
-          "3TFDZ3KKC8.com.johnchaykowsky.Quadrivia"
-        ],
+        "appIDs": ["3TFDZ3KKC8.com.johnchaykowsky.Quadrivia"],
         "components": [
-          {
-            "/": "/quadrivia-support/join/",
-            "#": "v2*"
-          },
-          {
-            "/": "/quadrivia-support/join/",
-            "#": "v1.*"
-          }
+          { "/": "/quadrivia-support/join/", "#": "v1.*" }
         ]
       }
     ]
